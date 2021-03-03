@@ -7,7 +7,7 @@
 		<title>Form</title>
 	</head>
 	<body>
-		<form action="processForm" method="get">
+		<form action="preprocessForm" method="get">
 			Nombre: <input type="text" name="nombre"/><br>
 			Edad: <input type="text" name="edad"><br>			
 			<input type="submit">

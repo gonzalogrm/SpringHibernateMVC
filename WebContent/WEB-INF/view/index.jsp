@@ -8,6 +8,6 @@
 </head>
 <body>
 	<h1>INDEX</h1>
-	<a href="pageForm">Ir a formulario</a>
+	<a href="goToForm">Ir a formulario</a>
 </body>
 </html>

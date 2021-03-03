@@ -7,7 +7,7 @@
 		<title>Process Form</title>
 	</head>
 	<body>
-		Hola ${param.nombre}, tienes ${param.edad} años.
+		Hola ${preprocessedName}, tienes ${param.edad} años.
 		<br><br>
 		
 		<a href="goToIndex">Volver a index</a>
