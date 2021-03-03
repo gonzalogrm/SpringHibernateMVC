@@ -5,7 +5,6 @@
 	id="WebApp_ID" version="3.1">
 
 	<display-name>MVC Project</display-name>
-
 	<absolute-ordering />
 
 	<!-- Configuracion del dispatcher servlet -->

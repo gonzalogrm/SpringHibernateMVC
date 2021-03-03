@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Hello world</title>
+<title>Index</title>
 </head>
 <body>
-	<h1>Hello world</h1>
+	<h1>INDEX</h1>
+	<a href="pageForm">Ir a formulario</a>
 </body>
 </html>
