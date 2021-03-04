@@ -14,5 +14,7 @@
 	<!-- Nos lleva a nuestra carpeta WebContent -->
 	<img alt="JAVA" src="${pageContext.request.contextPath}/resources/img/java.jpg">
 	
+	<br><br>
+	<a href="user/goToForm">Ir a formulario Usuario</a>	
 </body>
 </html>
