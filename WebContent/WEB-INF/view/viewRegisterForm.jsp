@@ -11,5 +11,7 @@
 		ID: ${user.id}<br>
 		Name: ${user.name}<br>
 		Nickname: ${user.nickname}<br>
+		Role: ${user.role}<br>
+		Language: ${user.language}<br>
 	</body>
 </html>

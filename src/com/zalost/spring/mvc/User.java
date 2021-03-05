@@ -1,13 +1,19 @@
 package com.zalost.spring.mvc;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 public class User {
 	//Parameters
 	private int id;
 	private String name;
 	private String nickname;
+	private String role;
+	private String language;
 		
-	//Constructor	
+	//Constructor
+	public User() {}
+	
 	/*
 	@Override
 	public String toString() {
@@ -28,10 +34,26 @@ public class User {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
+	
+	//Validaciones
+	@NotNull
+	@Size(min=2, message = "Size not valid. More than one character")
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+	public String getLanguage() {
+		return language;
+	}
+	public void setLanguage(String language) {
+		this.language = language;
+	}	
 }
