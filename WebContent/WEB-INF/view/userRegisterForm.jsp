@@ -18,6 +18,8 @@
 			<!-- Incluimos el mensaje de error de validación -->
 			Name: <form:input path="name"/> <form:errors path="name" style="color:red" /><br>
 			Nickname: <form:input path="nickname"/><br>
+			Age: <form:input path="age"/> <form:errors path="age" style="color:red" /><br>
+			Email: <form:input path="email"/> <form:errors path="email" style="color:red" /><br>
 			Role: 
 			<br>
 			<form:select path="role" multiple="false">
