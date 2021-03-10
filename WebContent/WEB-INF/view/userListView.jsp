@@ -31,5 +31,7 @@
 			
 		</table>
 		
+		<br><br>
+		<a href="${pageContext.request.contextPath}/index">Volver al inicio</a>		
 	</body>
 </html>

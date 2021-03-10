@@ -1,0 +1,1 @@
+Proyecto Maven que puede ser utilizado com plantilla para comenzar proyectos web MVC/DAO incluyendo Spring, Hibernate y las dependencias necesarias. 

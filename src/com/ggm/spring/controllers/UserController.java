@@ -1,4 +1,4 @@
-package com.ggm.spring.components;
+package com.ggm.spring.controllers;
 
 import java.util.List;
 
@@ -21,8 +21,8 @@ public class UserController {
 	public String userList(Model model) {
 		//Get from DAO
 		List<User> users= 
-			dao.selectGenericFromCriteria(User.class, "from User");
-			//dao.selectUsers();
+			dao.selectGenericFromCriteria(
+					User.class, "from User");
 		
 		System.out.println(users.toString());
 		
@@ -30,5 +30,5 @@ public class UserController {
 		model.addAttribute("userList", users);		
 
 		return "userListView";
-	}
+	}	
 }
