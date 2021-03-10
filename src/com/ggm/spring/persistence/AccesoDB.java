@@ -1,51 +1,51 @@
-package com.zalost.spring.persistence;
+package com.ggm.spring.persistence;
 
-import java.util.*;
-
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.zalost.spring.mvc.IHasIntID;
-
+import java.util.*;
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import com.ggm.spring.entity.*;
 
+@Repository
 public class AccesoDB implements DAO {	
 	
+	@Autowired
 	private SessionFactory sessionFactory;
-	 
-	public SessionFactory buildSessionFactory() 
-	{
-		try
-		{
-			if (sessionFactory == null) 
-			{
-				sessionFactory = 
-        			new Configuration().configure().buildSessionFactory();
-			}
-			return sessionFactory;
-		} catch (Throwable ex) {
-			throw new ExceptionInInitializerError(ex);
-		}
+	
+	@Transactional
+	//Example criteria: "from User e where e.age > 20"
+	//Usar el nombre de la clase, no de la tabla de la DB
+	public <T> List<T> selectGenericFromCriteria(Class<T> t, String criteria) {
+		List<T> result = null;
+		Session session = sessionFactory.getCurrentSession();		
+		Query<T> query = (Query<T>)(session.createQuery(criteria,t));
+    	result = query.getResultList();
+    	return result;	
 	}
-	 
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
-   	}
-	 
-	public void closeFactory() {
-		getSessionFactory().close();	
-	}	   
+	
+	@Transactional
+	public List<User> selectUsers() {
+		List<User> result = null;
+		Session session = sessionFactory.getCurrentSession();		
+		Query<User> query = session.createQuery("from User", User.class);
+    	result = query.getResultList();
+    	return result;	
+	}
 
+	/*
+	
 	public void InsertAutoID(Object o) {
 		Session session = getSessionFactory().openSession();
-    	//Comenzamos Transacción
+    	//Comenzamos Transaction
     	Transaction transaction =session.beginTransaction();		    	
     	try {
         	//Save
@@ -91,34 +91,9 @@ public class AccesoDB implements DAO {
 
     	return result;
 	}
+		
 	
-	//Example criteria: "from Empleado e where e.IdEmpleado > 20"
-	public <T> List<T> selectGenericFrom(Class<T> t, String criteria) {
-		List<T> result = new ArrayList<T>();
-    	
-		Session session = getSessionFactory().openSession();
-		//Comenzamos Transacción
-    	Transaction transaction =session.beginTransaction();	
-		try {			    	
-	    	//Read
-	    	result = (ArrayList<T>)session.createQuery(criteria).getResultList();
-	    	//Commit
-	    	transaction.commit();
-		}
-		catch (HibernateException hibernateEx) {
-            try {
-            	transaction.rollback();
-            } catch(RuntimeException runtimeEx){
-            	System.err.printf("Error en RollBack Transaction", runtimeEx);
-            }
-            hibernateEx.printStackTrace();
-        }
-    	finally {
-    		session.close();
-    	}    
-    	
-    	return result;	
-	}
+	
 	
 	
 	public <T extends IHasIntID> void updateGenericByID(
@@ -211,4 +186,5 @@ public class AccesoDB implements DAO {
             e.printStackTrace();
         }
     }
+    */
 }

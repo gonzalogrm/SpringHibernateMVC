@@ -1,4 +1,4 @@
-package com.zalost.spring.mvc;
+package com.ggm.spring.entity;
 
 public interface IHasIntID {
 	public abstract int getId();

@@ -1,23 +1,44 @@
-package com.zalost.spring.mvc;
+package com.ggm.spring.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class User {
+@Entity
+@Table(name="user")
+public class User implements IHasIntID{
 	//Parameters
+	@Id
+	@Column(name="id") 
 	private int id;
+	
+	@Column(name="name") 
 	private String name;
-	private String nickname;
+	
+	@Column(name="email") 
 	private String email;
+	
+	@Column(name="age") 
 	private int age;
-	private String role;
+	
+	@Column(name="language") 
 	private String language;
 		
 	//Constructor
 	public User() {}
+	
+	public User(String name, String email, int age, String language) {
+		this.name = name;
+		this.email = email;
+		this.age = age;
+		this.language = language;
+	}
 	
 	/*
 	@Override
@@ -26,18 +47,13 @@ public class User {
 	}
 	*/
 	
+
 	//Getters Setters
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public String getNickname() {
-		return nickname;
-	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
 	}
 	
 	//Validaciones
@@ -48,12 +64,6 @@ public class User {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public String getRole() {
-		return role;
-	}
-	public void setRole(String role) {
-		this.role = role;
 	}
 	public String getLanguage() {
 		return language;
