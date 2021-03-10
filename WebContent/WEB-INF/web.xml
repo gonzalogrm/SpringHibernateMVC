@@ -7,6 +7,12 @@
 	<display-name>MVC Project</display-name>
 	<absolute-ordering />
 
+	<welcome-file-list>
+	  <welcome-file>index.jsp</welcome-file>
+	  <welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+
 	<!-- Configuracion del dispatcher servlet -->
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
@@ -22,6 +28,5 @@
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>/</url-pattern>
-	</servlet-mapping>
-	
+	</servlet-mapping>	
 </web-app>
