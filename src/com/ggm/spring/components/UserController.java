@@ -16,7 +16,7 @@ public class UserController {
 	
 	@Autowired
 	private DAO dao;
-	
+		
 	@RequestMapping("/userlist")
 	public String userList(Model model) {
 		//Get from DAO

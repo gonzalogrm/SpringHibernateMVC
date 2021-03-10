@@ -19,6 +19,7 @@
 	<context:component-scan base-package="com.ggm.spring" />
 
 	<!-- Annotation configuration -->
+	<mvc:default-servlet-handler/>
 	<mvc:annotation-driven/>
 	
 	<!-- Resources location-->
