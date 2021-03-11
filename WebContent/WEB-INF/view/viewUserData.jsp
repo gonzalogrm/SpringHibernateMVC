@@ -4,10 +4,11 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>View Register Form</title>
+		<title>View User</title>
 	</head>
 	<body>
-		<h1>Registro completado</h1>
+		<h1>User Info</h1>
+		ID: ${user.id}<br>
 		Name: ${user.name}<br>
 		Email: ${user.email}<br>
 		Age: ${user.age}<br>

@@ -11,7 +11,15 @@
 	</head>
 	<body>
 		<h1>INDEX</h1>
-		<a href="users/userlist">Ver todos los usuarios</a>	
+		<br><br>
+		<a href="users/userlist">Ver todos los usuarios</a>
+		<br><br>
+		<a href="users/searchByID">Buscar usuario por ID</a>
+		<br><br>
+		<a href="users/searchByEmail">Buscar usuario por email</a>
+		<br><br>
+		<a href="users/newUserFrom">Dar de alta usuario</a>	
+		<br><br>
 		
 		<br><br>
 		<!-- Nos lleva a nuestra carpeta WebContent -->

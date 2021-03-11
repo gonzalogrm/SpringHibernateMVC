@@ -1,5 +1,6 @@
 package com.ggm.spring.persistence;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -25,77 +26,45 @@ public class AccesoDB implements DAO {
 	//Example criteria: "from User e where e.age > 20"
 	//Usar el nombre de la clase, no de la tabla de la DB
 	public <T> List<T> selectGenericFromCriteria(Class<T> t, String criteria) {
-		List<T> result = null;
 		Session session = sessionFactory.getCurrentSession();		
 		Query<T> query = (Query<T>)(session.createQuery(criteria,t));
-    	result = query.getResultList();
-    	return result;	
+    	return query.getResultList();
+	}
+	
+	@Transactional
+	public <T> T selectFirstGenericFromCriteria(Class<T> t, String criteria) {
+		Session session = sessionFactory.getCurrentSession();		
+		Query<T> query = (Query<T>)(session.createQuery(criteria,t));
+    	return query.getResultList().get(0);
 	}
 	
 	@Transactional
 	public List<User> selectUsers() {
-		List<User> result = null;
 		Session session = sessionFactory.getCurrentSession();		
 		Query<User> query = session.createQuery("from User", User.class);
-    	result = query.getResultList();
-    	return result;	
+    	return query.getResultList();	
 	}
 
-	/*
-	
+	@Transactional
 	public void InsertAutoID(Object o) {
-		Session session = getSessionFactory().openSession();
-    	//Comenzamos Transaction
-    	Transaction transaction =session.beginTransaction();		    	
-    	try {
-        	//Save
-    		session.save(o);
-        	//Commit
-        	transaction.commit();
-    	}
-    	catch (HibernateException hibernateEx) {
-            try {
-            	transaction.rollback();
-            } catch(RuntimeException runtimeEx){
-                System.err.printf("Error en RollBack Transaction", runtimeEx);
-            }
-            hibernateEx.printStackTrace();
-        }
-    	finally {
-    		session.close();
-    	}    	
+		Session session = sessionFactory.getCurrentSession();
+		session.save(o);
 	}
 	
+	@Transactional
 	public <T extends IHasIntID> T selectGenericByAutoID(Class<T> t, int ID) {
-		T result =  null;
-
-    	Session session = getSessionFactory().openSession();
-    	//Comenzamos Transacción
-    	Transaction transaction =session.beginTransaction();		    	
-    	try {
-        	result =t.cast(session.get(t, ID));
-        	//Commit
-        	transaction.commit();
-    	}
-    	catch (HibernateException hibernateEx) {
-            try {
-            	transaction.rollback();
-            } catch(RuntimeException runtimeEx){
-                System.err.printf("Error en RollBack Transaction", runtimeEx);
-            }
-            hibernateEx.printStackTrace();
-        }
-    	finally {
-    		session.close();
-    	}    	
-
-    	return result;
+		Session session = sessionFactory.getCurrentSession();
+    	return t.cast(session.get(t, ID));
 	}
-		
 	
-	
-	
-	
+	@Transactional
+	public void executeVoidHQLQuery(String query) {
+		Session session = sessionFactory.getCurrentSession();
+        session.createQuery(query).executeUpdate();
+	}
+
+
+	/*	
 	public <T extends IHasIntID> void updateGenericByID(
 		Class<T> t, int ID, String propertyName, Object value){
 
@@ -125,29 +94,7 @@ public class AccesoDB implements DAO {
 	}	
 
 
-	public void executeHQLQuery(String query) {
-	    	
-    	Session session = getSessionFactory().openSession();
-    	//Comenzamos Transacción
-    	Transaction transaction =session.beginTransaction();
-    	try {
-        	//Read
-        	session.createQuery(query).executeUpdate();
-        	//Commit
-        	transaction.commit();
-    	}
-    	catch (HibernateException hibernateEx) {
-            try {
-            	transaction.rollback();
-            } catch(RuntimeException runtimeEx){
-            	System.err.printf("Error en RollBack Transaction", runtimeEx);
-            }
-            hibernateEx.printStackTrace();
-        }
-    	finally {
-    		session.close();
-    	}
-	}
+	
 	
 	//Métodos de reflection
 	//Información y ejemplos en https://java2blog.com/invoke-getters-setters-using-reflection-java/
