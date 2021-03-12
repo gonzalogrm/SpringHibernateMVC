@@ -26,7 +26,14 @@
 			
 		</table>
 		
+		<!-- 
+		<br><br>		
+		<a href="${pageContext.request.contextPath}/index">Volver al inicio</a>	
+		 -->		
+		
 		<br><br>
-		<a href="${pageContext.request.contextPath}/index">Volver al inicio</a>		
+		<input type="button" 
+		value="Volver a Inicio" 
+		onclick="window.location.href='${pageContext.request.contextPath}/index'; return false;"/>	
 	</body>
 </html>

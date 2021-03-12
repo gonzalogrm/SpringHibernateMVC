@@ -22,5 +22,10 @@
 			<!-- Al enviar, las MVC tags llaman a los setters -->
 			<input type="submit" value="Send">
 		</form:form>
+		
+		<br><br>
+		<input type="button" 
+		value="Volver a Inicio" 
+		onclick="window.location.href='${pageContext.request.contextPath}/index'; return false;"/>
 	</body>
 </html> 
