@@ -47,8 +47,6 @@
 	</bean> 
 	
 	<!--  Hibernate session factory -->
-	<!--  Hibernate TransactionManager -->
-	
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="myDataSource" />
@@ -61,12 +59,13 @@
 		</property>
    </bean>	  
     
-	<bean id="miTransactionManager"
+    <!--  Hibernate TransactionManager -->
+	<bean id="transactionManager"
             class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-	<tx:annotation-driven transaction-manager="miTransactionManager" />
+	<tx:annotation-driven transaction-manager="transactionManager" />
 	
 </beans>
 

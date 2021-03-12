@@ -46,7 +46,7 @@ public class UserController {
 		//Add to model
 		model.addAttribute("userList", users);		
 
-		return "userListView";
+		return "userview/userListView";
 	}
 	
 	
@@ -58,7 +58,7 @@ public class UserController {
 		User user = new User();		
 		model.addAttribute("user", user);
 		
-		return "userRegisterForm";
+		return "userview/userRegisterForm";
 	}
 	
 	@RequestMapping("/processNewUser")
@@ -69,11 +69,11 @@ public class UserController {
 		//Aplicamos la validación. BindingResult sin errores
 		if(!resValidation.hasErrors()) {			
 			//Guardamos en DB
-			dao.InsertAutoID(userToken);		
-			return "viewRegisterForm";
+			dao.Insert(userToken);
+			return "userview/viewRegisterForm";
 		}				
 		//En caso de errores volver a la página de formulario
-		return "userRegisterForm";
+		return "userview/userRegisterForm";
 	}
 	
 	//------------ Search ------------//
@@ -83,7 +83,7 @@ public class UserController {
 		SearchParameters searchParams = new SearchParameters();
 		model.addAttribute("searchParams", searchParams);
 		
-		return "userSearchByID";
+		return "userview/userSearchByID";
 	}
 	
 	@RequestMapping("/searchByEmail")
@@ -92,7 +92,7 @@ public class UserController {
 		SearchParameters searchParams = new SearchParameters();
 		model.addAttribute("searchParams", searchParams);
 		
-		return "userSearchByEmail";
+		return "userview/userSearchByEmail";
 	}
 	
 	@RequestMapping("/viewUserData")
@@ -101,7 +101,7 @@ public class UserController {
 		User user = null;
 		if(searchParams.getId() != -1) {
 			user = 
-				dao.selectGenericByAutoID(
+				dao.selectGenericByID(
 					User.class, searchParams.getId());
 		}		
 		else if(searchParams.getEmail() != null) {
@@ -111,7 +111,7 @@ public class UserController {
 		}	
 
 		model.addAttribute("user", user);		
-		return "viewUserData";
+		return "userview/viewUserData";
 	}
 	
 	

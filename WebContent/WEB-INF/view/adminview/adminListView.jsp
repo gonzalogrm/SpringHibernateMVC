@@ -5,27 +5,22 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>User List View</title>
+		<title>Admin List View</title>
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/ccs/TableCSS.css">
 	</head>
 	<body>
-		<h1>User List View</h1>
+		<h1>Admin List View</h1>
 		
 		<table>
 			<tr>
 				<th>ID</th>
 				<th>Nombre</th>
-				<th>Email</th>
-				<th>Edad</th>
-				<th>Idioma</th>
 			</tr>
 
-			<c:forEach var="u" items="${userList}">
+			<c:forEach var="a" items="${adminList}">
 				<tr>
-					<td>${u.id}</td>
-					<td>${u.name}</td>
-					<td>${u.email}</td>
-					<td>${u.age}</td>
-					<td>${u.language}</td>
+					<td>${a.id}</td>
+					<td>${a.name}</td>
 				</tr>
 			</c:forEach>
 			

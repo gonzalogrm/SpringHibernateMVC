@@ -19,12 +19,16 @@
 		<a href="users/searchByEmail">Buscar usuario por email</a>
 		<br><br>
 		<a href="users/newUserFrom">Dar de alta usuario</a>	
+		<br><br>	
+		<br><br>
+		<br><br>
+		<a href="admin/adminlist">Ver todos los admin</a>
+		<br><br>
+		<a href="admin/newAdminFrom">Dar de alta admin</a>	
 		<br><br>
 		
 		<br><br>
 		<!-- Nos lleva a nuestra carpeta WebContent -->
-		<img alt="JAVA" 
-		src="${pageContext.request.contextPath}/resources/img/javalogo.jpg" 
-		style="width:128px;height:128px;">
+		<img alt="JAVA" src="${pageContext.request.contextPath}/resources/img/javalogo.jpg" style="width:128px;height:128px;">
 	</body>
 </html>

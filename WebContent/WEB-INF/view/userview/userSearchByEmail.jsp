@@ -10,7 +10,7 @@
 	</head>
 	<body>
 		<form:form action="viewUserData" modelAttribute="searchParams">
-			ID: <form:input path="email"/><br>
+			Email: <form:input path="email"/><br>
 			<input type="submit" value="Send">
 		</form:form>
 	</body>
