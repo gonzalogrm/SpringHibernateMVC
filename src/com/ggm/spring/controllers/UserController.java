@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.validation.BindingResult;
@@ -61,7 +62,7 @@ public class UserController {
 		return "userview/userRegisterForm";
 	}
 	
-	@RequestMapping("/processNewUser")
+	@PostMapping("/processNewUser")
 	//@Valid para especificar que tenemos validación
 	public String processNewUser(@Valid @ModelAttribute("user") User userToken, 
 			BindingResult resValidation) {
@@ -112,7 +113,5 @@ public class UserController {
 
 		model.addAttribute("user", user);		
 		return "userview/viewUserData";
-	}
-	
-	
+	}	
 }

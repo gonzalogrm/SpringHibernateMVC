@@ -11,7 +11,7 @@
 	<body>
 		<h1>Register new User</h1>
 		<!-- https://www.javatpoint.com/spring-mvc-form-tag-library -->
-		<form:form action="processNewUser" modelAttribute="user">
+		<form:form action="processNewUser" modelAttribute="user" method="POST">
 			<!-- References getters setters -->
 			<!-- Getters y Setters sin Get/Set y en minúscula -->
 			<!-- ID: <form:input path="id"/><br>-->

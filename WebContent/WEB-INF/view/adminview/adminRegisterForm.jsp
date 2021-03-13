@@ -11,7 +11,7 @@
 	<body>
 		<h1>Register new Admin</h1>
 		<!-- https://www.javatpoint.com/spring-mvc-form-tag-library -->
-		<form:form action="processNewAdmin" modelAttribute="admin">
+		<form:form action="processNewAdmin" modelAttribute="admin" method="POST">
 			<!-- References getters setters -->
 			<!-- Getters y Setters sin Get/Set y en minúscula -->
 			<!-- ID: <form:input path="id"/><br>-->
