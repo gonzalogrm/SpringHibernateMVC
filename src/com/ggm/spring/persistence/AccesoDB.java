@@ -1,4 +1,5 @@
 package com.ggm.spring.persistence;
+import com.ggm.util.*;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -61,41 +62,6 @@ public class AccesoDB implements DAO {
 		Session session = sessionFactory.getCurrentSession();		
     	T result = t.cast(session.get(t, ID));        	
     	//Cambiamos el valor de la variable usando Reflection
-    	invokeSetter(result, propertyName, value);  
+    	UtilityMethods.invokeSetter(result, propertyName, value);  
 	}	
-
-
-	//https://java2blog.com/invoke-getters-setters-using-reflection-java/
-	private void invokeSetter(Object obj, String propertyName, Object variableValue)
-    {
-        PropertyDescriptor descriptor;
-        try {
-        	descriptor = 
-        			new PropertyDescriptor(propertyName, obj.getClass());
-            Method setter = 
-            		descriptor.getWriteMethod();
-            try {
-                setter.invoke(obj,variableValue);
-            } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-                e.printStackTrace();
-            }
-        } catch (IntrospectionException e) {
-            e.printStackTrace();
-        }
- 
-    }
-	
-	private void invokeGetter(Object obj, String variableName)
-    {
-        try {
-            PropertyDescriptor descriptor = 
-            		new PropertyDescriptor(variableName, obj.getClass());
-            Method getter = 
-            		descriptor.getReadMethod();
-            Object o = getter.invoke(obj);
-            System.out.println(o);
-        } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | IntrospectionException e) {
-            e.printStackTrace();
-        }
-    }
 }
