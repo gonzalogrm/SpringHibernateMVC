@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 
+import com.ggm.spring.entity.AppConfig;
 import com.ggm.spring.entity.User;
 import com.ggm.spring.persistence.DAO;
 import com.ggm.spring.persistence.SearchParameters;
@@ -56,7 +57,9 @@ public class UserController {
 	@RequestMapping("/newUserFrom")
 	public String newUserForm(Model model) {
 		//Testing Spring prototype
-		User user = new User();		
+		User user =
+			AppConfig.factory.getBean(User.class);
+		
 		model.addAttribute("user", user);
 		
 		return "userview/userRegisterForm";
@@ -81,7 +84,8 @@ public class UserController {
 	@RequestMapping("/searchByID")
 	public String searchByID(Model model) {
 		//Testing Spring prototype
-		SearchParameters searchParams = new SearchParameters();
+		SearchParameters searchParams =
+				AppConfig.factory.getBean(SearchParameters.class);
 		model.addAttribute("searchParams", searchParams);
 		
 		return "userview/userSearchByID";
@@ -90,7 +94,8 @@ public class UserController {
 	@RequestMapping("/searchByEmail")
 	public String searchByEmail(Model model) {
 		//Testing Spring prototype
-		SearchParameters searchParams = new SearchParameters();
+		SearchParameters searchParams =
+				AppConfig.factory.getBean(SearchParameters.class);
 		model.addAttribute("searchParams", searchParams);
 		
 		return "userview/userSearchByEmail";

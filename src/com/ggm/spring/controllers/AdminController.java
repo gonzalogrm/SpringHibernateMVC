@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ggm.spring.entity.Admin;
+import com.ggm.spring.entity.AppConfig;
 import com.ggm.spring.persistence.DAO;
+import com.ggm.spring.persistence.SearchParameters;
 
 @Controller
 @RequestMapping("/admin")
@@ -38,7 +40,8 @@ public class AdminController {
 	@RequestMapping("/newAdminFrom")
 	public String newAdminForm(Model model) {
 		//Testing Spring prototype
-		Admin admin = new Admin();		
+		Admin admin = //new Admin();
+			AppConfig.factory.getBean(Admin.class);
 		model.addAttribute("admin", admin);
 		
 		return "adminview/adminRegisterForm";
